@@ -1,5 +1,5 @@
 import { readFile, writeFile, readdir } from "fs/promises";
-import { extname } from "path";
+import { resolve, extname } from "path";
 import { createHash } from "crypto";
 
 import { rollup } from "rollup";
@@ -33,6 +33,11 @@ const plugins = [
                         tsx,
                         jsx,
                     },
+                    paths: {
+                        "@util/*": ["./util/*"],
+                    },
+                    baseUrl: resolve("./"),
+                    minify: { compress: true, mangle: true }
                 },
                 env: {
                     targets: "defaults",

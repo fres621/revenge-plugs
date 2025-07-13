@@ -6,7 +6,11 @@
         "moduleResolution": "node",
         "esModuleInterop": true,
         "jsx": "react-native",
-        "allowJs": true
+        "allowJs": true,
+        "experimentalDecorators": true,
+        "paths": {
+            "@util/*": ["./util/*"]
+        }
     },
-    "include": ["plugins", "node_modules/vendetta-types"]
+    "include": ["plugins", "util", "node_modules/vendetta-types"]
 }
