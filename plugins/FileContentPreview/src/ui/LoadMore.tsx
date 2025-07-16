@@ -1,9 +1,9 @@
-import { React, i18n } from '@vendetta/metro/common';
+import { React } from '@vendetta/metro/common';
 import { General } from '@vendetta/ui/components';
 
 const { Text, TouchableOpacity } = General;
 
-const LoadMore: any = ({ buttonColor, textColor, buttonTextColor, remainingText, onPress }) => {
+const LoadMore: any = ({ buttonColor, textColor, buttonTextColor, remainingText, onPress, moreText }) => {
   return (
     <>
       <Text style={{ color: textColor, marginTop: 7 }}>{remainingText}</Text>
@@ -16,7 +16,7 @@ const LoadMore: any = ({ buttonColor, textColor, buttonTextColor, remainingText,
             textAlign: 'center',
             fontSize: 20,
           }}>
-          {i18n.Messages.VOICE_PANEL_LOAD_MORE}
+          {moreText}
         </Text>
       </TouchableOpacity>
     </>

@@ -49,12 +49,10 @@ const Loading: any = () => (
 
 export const FCModal: any = ({
   filename = 'unknown',
-  url = 'https://cdn.discordapp.com/attachments/1068304660269641738/1144843403151020122/file.txt',
+  url = '',
   bytes = 1,
 }) => {
-  console.log(0);
   const [translations] = React.useState(() => getMessages(intl.currentLocale));
-  console.log(1);
   const colors = {
     header: resolveSemanticColor(ThemeStore.theme, semanticColors.HEADER_PRIMARY),
     sub: resolveSemanticColor(ThemeStore.theme, semanticColors.TEXT_MUTED),
@@ -74,7 +72,6 @@ export const FCModal: any = ({
     },
   };
 
-  console.log(2);
   const Content: any = () => {
     const insets = SafeArea.useSafeAreaInsets();
     const [visibleModal, setVisibleModal] = React.useState<{
@@ -92,7 +89,6 @@ export const FCModal: any = ({
     const isLoading = state.content ? false : true;
 
     if (state.firstTime) {
-      console.log('first time');
       fetch(url, {
         headers: {
           Range: `bytes=0-${maxBytes}`,
@@ -192,11 +188,11 @@ export const FCModal: any = ({
             info={'JUMP'}
             content={
               <Image
-                source={getAssetIDByName('ic_expand_more_24px')}
+                source={getAssetIDByName('ic_arrow_right')}
                 style={{
                   height: 24,
                   width: 24,
-                  transform: [{ scaleX: -1 }, { rotate: '-90deg' }],
+                  transform: [{ scaleX: -1 }, { rotate: '90deg' }],
                 }}
               />
             }
@@ -238,6 +234,7 @@ export const FCModal: any = ({
               buttonTextColor={colors.header}
               textColor={colors.sub}
               remainingText={`+ ${filesize(bytes - state.loadedBytes)} not loaded.`}
+              moreText={translations.LOAD_MORE}
               onPress={onLoadMore}
             />
           )}
@@ -265,16 +262,15 @@ export const FCModal: any = ({
     );
   };
 
-  console.log(3);
   return (
     <Navigator
       initialRouteName="FILE_CONTENT_PREVIEW"
       screens={{
         FILE_CONTENT_PREVIEW: {
           headerLeft: closeButton(() => modals.popModal('file-content-preview')),
-          headerRight: () => <DownloadButton url={url} saveText={translations.FILE_SAVED} failText={translations.FILE_SAVE_ERROR} copyText={'Todo copied'} />,
+          headerRight: () => <DownloadButton url={url} saveText={translations.FILE_SAVED} failText={translations.FILE_SAVE_ERROR} copyText={translations.COPIED} />,
           render: () => <Content />,
-          headerTitle: () => <FCTitle filename={filename} subtext={filesize(bytes)} color={colors.header} />,
+          headerTitle: () => <FCTitle filename={filename} subtext={filesize(bytes)} color={colors.header} copyText={translations.COPIED} />,
         },
       }}
     />
