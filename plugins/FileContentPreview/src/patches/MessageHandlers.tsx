@@ -28,7 +28,6 @@ export default function patch() {
       const attachmentIndex = index - codedLinks.length;
       const attachment = textFiles[attachmentIndex];
       const { filename, url, size } = attachment;
-      console.log({ filename, url, size });
       modals.pushModal({
         key: 'file-content-preview',
         modal: {

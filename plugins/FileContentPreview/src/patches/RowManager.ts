@@ -1,7 +1,7 @@
 /**
  * Patch the in-chat messages (RowManager.generate)
  */
-import { findByStoreName, findByName } from '@vendetta/metro';
+import { findByStoreName, findByName, findByProps } from '@vendetta/metro';
 import { after } from '@vendetta/patcher';
 import filetypes from '../filetypes';
 
@@ -9,6 +9,7 @@ const ThemeStore = findByStoreName('ThemeStore');
 
 const RowManager = findByName('RowManager');
 const getEmbedThemeColors = findByName('getEmbedThemeColors');
+const CodedLinkExtendedType = findByProps("CodedLinkExtendedType")?.CodedLinkExtendedType ?? { EMBEDDED_ACTIVITY_INVITE: 3 };
 
 function getCodedLinkColors() {
   let colors = getEmbedThemeColors?.(ThemeStore.theme)?.colors || {
@@ -33,7 +34,7 @@ function makeRPL(filename = 'unknown', size = '? bytes') {
     titleText: 'File' + ' — ' + size,
     structurableSubtitleText: null,
     type: null,
-    extendedType: 3,
+    extendedType: CodedLinkExtendedType.EMBEDDED_ACTIVITY_INVITE,
     participantAvatarUris: [],
     acceptLabelText: 'Preview',
     splashUrl: null,
