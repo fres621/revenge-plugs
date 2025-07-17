@@ -1,1 +1,1 @@
-{"name":"FileContentPreview","description":"Allows you to preview the contents of text files in the app.","authors":[{"name":"fres","id":"843448897737064448"}],"main":"index.js","vendetta":{"icon":"ic_file_text"},"hash":"847965a0eb39d777f0eb95cfaea1c7ff667ae6d5f915306407e91f0857a5e8f8"}
+{"name":"FileContentPreview","description":"Allows you to preview the contents of text files in the app.","authors":[{"name":"fres","id":"843448897737064448"}],"main":"index.js","vendetta":{"icon":"ic_file_text"},"hash":"09e563b16ee175be5c3de012e80d500929be18453a84b228d9cd69e4a39e044a"}
