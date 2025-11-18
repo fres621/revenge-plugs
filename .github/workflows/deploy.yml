@@ -27,14 +27,8 @@ jobs:
       - name: Build plugin(s)
         run: node ./build.mjs
 
-        # Foolproof feature:
-        # - Copies over README so that the root of the deployed website shows it
-        # - Changes 404 page to README so that you don't get lost while clicking links
-        # If you remove this step then you should probably remove the enable_jekyll option in the next one
-      - name: Copy additional files
-        run: |
-          cp README.md dist/README.md
-          cp README.md dist/404.md
+      - name: Build GitHub Pages
+        run: node ./pages.mjs
 
         # Documentation: https://github.com/peaceiris/actions-gh-pages
       - name: Deploy to GitHub Pages
@@ -43,6 +37,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           # Makes it so the md files in the previous step get processed by GitHub Pages
-          enable_jekyll: true
+          enable_jekyll: false
           # This creates the CNAME file required to host GitHub Pages on a custom domain
           # cname: example.com
