@@ -54,10 +54,10 @@ export const FCModal: any = ({
 }) => {
   const [translations] = React.useState(() => getMessages(intl.currentLocale));
   const colors = {
-    header: resolveSemanticColor(ThemeStore.theme, semanticColors.HEADER_PRIMARY),
+    header: resolveSemanticColor(ThemeStore.theme, semanticColors.MOBILE_TEXT_HEADING_PRIMARY),
     sub: resolveSemanticColor(ThemeStore.theme, semanticColors.TEXT_MUTED),
-    bgDark: resolveSemanticColor(ThemeStore.theme, semanticColors.BACKGROUND_SECONDARY_ALT),
-    bgBright: resolveSemanticColor(ThemeStore.theme, semanticColors.BACKGROUND_SECONDARY),
+    bgDark: resolveSemanticColor(ThemeStore.theme, semanticColors.BACKGROUND_BASE_LOWEST),
+    bgBright: resolveSemanticColor(ThemeStore.theme, semanticColors.BACKGROUND_BASE_LOWER),
     bgBrighter: resolveSemanticColor(ThemeStore.theme, semanticColors.BACKGROUND_ACCENT),
   };
 
